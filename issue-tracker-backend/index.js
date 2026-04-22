@@ -10,7 +10,7 @@ const port = process.env.PORT || 3001;
 const app = express();
 
 //allow requests from frontend domain
-const allowedOrigins = new Set(['http://localhost:5173', 'https://job-portal-system-sgln.onrender.com']);
+const allowedOrigins = new Set(['http://localhost:5173', 'https://issue-tracker-system-olive.vercel.app/']);
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
