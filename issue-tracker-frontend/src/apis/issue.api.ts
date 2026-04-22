@@ -2,6 +2,7 @@ import type { GetIssuesData, GetIssuesParams, Issue, IssueCountData, IssueData }
 import type { Response } from "../types/response.types";
 import axiosInstance from "../utils/axios";
 
+// Get all issues
 export const getAllIssues = async (params?: GetIssuesParams): Promise<Response<GetIssuesData>> => {
     try {
         const response = await axiosInstance.get("/issues", {params});
@@ -20,6 +21,7 @@ export const getAllIssues = async (params?: GetIssuesParams): Promise<Response<G
     }
 }
 
+// Create an issue 
 export const createIssue = async (data: Partial<Issue>): Promise<Response<IssueData>> => {
     try {
         const response = await axiosInstance.post("/issues/create", data);
@@ -38,6 +40,7 @@ export const createIssue = async (data: Partial<Issue>): Promise<Response<IssueD
     }
 }
 
+// Get Issue by id
 export const getIssueById = async (id: string): Promise<Response<Issue>> => {
     try {
         const response = await axiosInstance.get(`/issues/${id}`);
@@ -56,6 +59,7 @@ export const getIssueById = async (id: string): Promise<Response<Issue>> => {
     }
 }
 
+// Update issue details
 export const editIssue = async (id: string, editIssueData: Partial<Issue>): Promise<Response<IssueData>> => {
     try {
         const response = await axiosInstance.patch(`/issues/edit/${id}`, editIssueData);
@@ -74,6 +78,7 @@ export const editIssue = async (id: string, editIssueData: Partial<Issue>): Prom
     }
 }
 
+// Delete an issue
 export const deleteIssue = async (id: string): Promise<Response<Partial<IssueData>>> => {
     try {
         const response = await axiosInstance.delete(`/issues/delete/${id}`);
@@ -92,6 +97,7 @@ export const deleteIssue = async (id: string): Promise<Response<Partial<IssueDat
     }
 }
 
+// Get issue counts by status
 export const getIssueCounts = async (): Promise<Response<IssueCountData>> => {
     try {
         const response = await axiosInstance.get("/issues/count");
@@ -110,6 +116,7 @@ export const getIssueCounts = async (): Promise<Response<IssueCountData>> => {
     }
 }
 
+// Endpoint to update status only
 export const updateIssueStatus = async (id: string, status: string): Promise<Response<Issue>> => {
     try {
         const response = await axiosInstance.patch(`/issues/status/update/${id}`, {status});
