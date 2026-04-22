@@ -39,7 +39,7 @@ export const useIssues = (
         isFetching,
         isRefetching,
     } = useQuery<GetIssuesData>({
-        queryKey: ['issues'],
+        queryKey: ['issues', params],
         queryFn: async () => {
             const res = await getAllIssues(params);
             if (!res.success) throw new Error(res.message);
