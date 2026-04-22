@@ -16,7 +16,7 @@ const AppHeader = () => {
             <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center w-9 h-9 rounded-lg text-white shadow-md">
                     <img
-                    src="/src/assets/logo.png" 
+                    src="/logo.png" 
                     alt="Issue Tracker Logo"
                     className="w-8 h-8 object-contain"
                     />
