@@ -33,6 +33,12 @@ try {
 app.use(json());
 app.use(urlencoded({extended:true}));
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Issue Tracker API is running"
+  });
+});
+
 app.use('/issues', issueRoute);
 app.use('/users',userRoute);
 
