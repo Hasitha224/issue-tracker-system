@@ -1,5 +1,5 @@
 import "ldrs/react/Hatch.css";
-import { Loader, File, CheckCircle2, Inbox } from "lucide-react"
+import { Loader, CheckCircle2, Inbox } from "lucide-react"
 import SummaryCard from "../../components/ui/SummaryCard"
 import { useMemo, useState } from "react"
 import { DataTable } from "../../components/ui/DataTable";
@@ -12,9 +12,10 @@ import IssueFilterControl from "./modals/IssueFilterControl";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 import { Hatch } from "ldrs/react";
 import IssueViewModal from "./modals/IssueViewModal";
-import ConfirmationModal from "../../components/ui/models/ConfirmationModal";
+import ConfirmationModal from "../../components/ui/modals/ConfirmationModal";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import NoResultCard from "../../components/ui/NoResultCard";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -199,33 +200,17 @@ const Dashboard = () => {
                 )}
                 
                 {issues.length === 0 && hasActiveFilters && (
-                  <div className="bg-card rounded-xl border border-panel-border shadow-sm p-12 text-center">
-                    <File
-                      className="mx-auto text-muted-foreground mb-4"
-                      size={48}
-                    />
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
-                        No Matched Issues found
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                        No issues match your current filters. Try adjusting your search or filter criteria.
-                    </p>
-                  </div>
+                  <NoResultCard
+                    title="No Matched Issues found"
+                    description="No issues match your current filters. Try adjusting your search or filter criteria."
+                  />
                 )}
               </div>
             ) : (
-              <div className="bg-card rounded-xl border border-panel-border shadow-sm p-12 text-center">
-                <File
-                  className="mx-auto text-muted-foreground mb-4"
-                  size={48}
-                />
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                    No Issues Found
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                    There are no issues to display.
-                </p>
-              </div>
+              <NoResultCard
+                title="No Issues Found"
+                description="There are no issues to display."
+              />
             )}
         </>
       )}
